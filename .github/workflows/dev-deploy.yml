@@ -43,7 +43,7 @@ jobs:
       - name: Apply Kubernetes manifests
         run: |
 
-          kubectl config set-context --current --namespace=
+          kubectl config set-context --current --namespace=talha-rasool-dev
           for file in k8s/*.yaml; do
             kubectl apply -f $file
           done
