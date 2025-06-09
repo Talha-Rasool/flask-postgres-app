@@ -31,10 +31,6 @@ jobs:
       - name: Set KUBECONFIG environment
         run: echo "KUBECONFIG=$PWD/kubeconfig" >> $GITHUB_ENV
 
-      - name: Create Namespace (if not exists)
-        run: |
-          kubectl apply -f k8s/namespace.yaml
-
       - name: Create PostgreSQL Secret in Kubernetes
         run: |
           kubectl create secret generic postgres-secret \
@@ -47,7 +43,7 @@ jobs:
       - name: Apply Kubernetes manifests
         run: |
 
-          kubectl config set-context --current --namespace=flask-demo-dev
+          kubectl config set-context --current --namespace=
           for file in k8s/*.yaml; do
             kubectl apply -f $file
           done
