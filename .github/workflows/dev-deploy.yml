@@ -33,7 +33,7 @@ jobs:
 
       - name: Create Secret from Template
         run: |
-          envsubst < k8s/postgres-secret.yaml > k8s/postgres-secret-rendered.yaml
+          envsubst < k8s/postgres-secrets.yaml > k8s/postgres-secret-rendered.yaml
           kubectl apply -f k8s/postgres-secret-rendered.yaml
         env:
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
