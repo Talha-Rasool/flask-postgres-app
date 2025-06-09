@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: flask-route
+  namespace: flask-demo-dev
+spec:
+  to:
+    kind: Service
+    name: flask-service
+  port:
+    targetPort: 5000
+  tls:
+    termination: edge
