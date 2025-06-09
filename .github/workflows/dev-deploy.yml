@@ -33,7 +33,7 @@ jobs:
 
       - name: Create Namespace (if not exists)
         run: |
-          kubectl apply -f manifests/1-namespace.yaml
+          kubectl apply -f k8s/namespace.yaml
 
       - name: Create PostgreSQL Secret in Kubernetes
         run: |
