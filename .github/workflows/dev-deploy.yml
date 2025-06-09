@@ -35,10 +35,9 @@ jobs:
         run: |
           kubectl create secret generic postgres-secret \
             --from-literal=POSTGRES_DB=${{ secrets.POSTGRES_DB }} \
-
             --from-literal=POSTGRES_USER=${{ secrets.POSTGRES_USER }} \
             --from-literal=POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} \
-            --namespace=flask-demo-dev
+            --namespace=talha-rasool-dev \
 
       - name: Apply Kubernetes manifests
         run: |
