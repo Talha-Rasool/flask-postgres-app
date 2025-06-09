@@ -31,13 +31,14 @@ jobs:
       - name: Set KUBECONFIG environment
         run: echo "KUBECONFIG=$PWD/kubeconfig" >> $GITHUB_ENV
 
-      - name: Create PostgreSQL Secret in Kubernetes
+      - name: Create Secret from Template
         run: |
-          kubectl create secret generic postgres-secret \
-            --from-literal=POSTGRES_DB=${{ secrets.POSTGRES_DB }} \
-            --from-literal=POSTGRES_USER=${{ secrets.POSTGRES_USER }} \
-            --from-literal=POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} \
-            --namespace=talha-rasool-dev \
+          envsubst < k8s/postgres-secret.yaml > k8s/postgres-secret-rendered.yaml
+          kubectl apply -f k8s/postgres-secret-rendered.yaml
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
 
       - name: Apply Kubernetes manifests
         run: |
