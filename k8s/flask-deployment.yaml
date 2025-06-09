@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: flask
-          image: <your-dockerhub-username>/flask-postgres:latest
+          image: rasooltalha/flask-postgres:latest
           ports:
             - containerPort: 5000
           env:
