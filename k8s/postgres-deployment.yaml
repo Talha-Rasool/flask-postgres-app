@@ -13,7 +13,8 @@ spec:
       labels:
         app: postgres
     spec:
-      : - name: postgres
+      containers:
+        - name: postgres
           image: postgres:15
           ports:
             - containerPort: 5432
@@ -33,12 +34,12 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: POSTGRES_PASSWORD
-            - name: PGDATA # ✅ Tell Postgres to use a clean path
+            - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
           volumeMounts:
             - name: postgres-storage
-              mountPath: /var/lib/postgresql/data/pgdata # ✅ Mount into subdir
-              subPath: pgdata # ✅ Critical to avoid lost+found issue
+              mountPath: /var/lib/postgresql/data/pgdata
+              subPath: pgdata
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
