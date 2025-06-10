@@ -13,6 +13,8 @@ spec:
       labels:
         app: postgres
     spec:
+      securityContext: # ✅ SecurityContext at pod level
+        fsGroup: 1001 # Helps fix volume permission issues
       containers:
         - name: postgres
           image: postgres:15
@@ -34,11 +36,12 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: POSTGRES_PASSWORD
-            - name: PGDATA
+            - name: PGDATA # ✅ Tell Postgres to use a clean path
               value: /var/lib/postgresql/data/pgdata
           volumeMounts:
             - name: postgres-storage
-              mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/postgresql/data/pgdata # ✅ Mount into subdir
+              subPath: pgdata # ✅ Critical to avoid lost+found issue
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
