@@ -40,10 +40,21 @@ jobs:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
 
-      - name: Apply Kubernetes manifests
-        run: |
+      #   - name: Apply Kubernetes manifests
+      #     run: |
 
-          kubectl config set-context --current --namespace=talha-rasool-dev
+      #       kubectl config set-context --current --namespace=talha-rasool-dev
+      #       for file in k8s/*.yaml; do
+      #         kubectl apply -f $file
+      #       done
+
+      - name: Apply all Kubernetes manifests
+        run: |
+          kubectl config set-context --current --namespace=honey-singh-dev
           for file in k8s/*.yaml; do
-            kubectl apply -f $file
+            echo "Applying $file"
+            cat $file
+            kubectl apply -f "$file"
           done
+        env:
+          KUBECONFIG: ${{ github.workspace }}/kubeconfig
