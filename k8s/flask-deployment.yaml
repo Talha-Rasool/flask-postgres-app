@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: flask
-          image: rasooltalha/flask-postgres:latest
+          image: rasooltalha/flask-postgres:dev
           ports:
             - containerPort: 5000
           env:
