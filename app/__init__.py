@@ -10,8 +10,9 @@ def create_app():
 
     db.init_app(app)
 
-    # Register blueprints
-    from .routes import main as main_blueprint
+    # Register blueprint
+    from .routes.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
     return app
+
