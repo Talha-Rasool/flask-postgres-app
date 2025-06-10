@@ -13,10 +13,7 @@ spec:
       labels:
         app: postgres
     spec:
-      securityContext: # ✅ SecurityContext at pod level
-        fsGroup: 1001 # Helps fix volume permission issues
-      containers:
-        - name: postgres
+      : - name: postgres
           image: postgres:15
           ports:
             - containerPort: 5432
