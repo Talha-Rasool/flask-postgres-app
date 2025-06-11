@@ -36,9 +36,9 @@ jobs:
           envsubst < k8s/postgres-secrets.yaml > k8s/postgres-secret-rendered.yaml
           kubectl apply -f k8s/postgres-secret-rendered.yaml
         env:
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRESQL_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRESQL_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRESQL_DATABASE }}
 
       - name: Apply all Kubernetes manifests
         run: |
