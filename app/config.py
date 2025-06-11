@@ -8,6 +8,10 @@ class Config:
     DB_PORT = os.getenv("POSTGRES_PORT", "5432")
     DB_NAME = os.getenv("POSTGRESQL_DATABASE")
 
+    print("DB_USER =", DB_USER)
+    print("DB_PASS =", DB_PASS)
+    print("DB_NAME =", DB_NAME)
+
     if not all([DB_USER, DB_PASS, DB_NAME]):
         raise ValueError("Missing required DB environment variables!")
 
