@@ -19,22 +19,22 @@ spec:
           ports:
             - containerPort: 5000
           env:
-            - name: DB_HOST
+            - name: PROSTGRES_HOST
               value: postgres # Service name
-            - name: DB_NAME
+            - name: POSTGRESQL_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
                   key: POSTGRESQL_DATABASE
-            - name: DB_USER
+            - name: POSTGRESQL_USER
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
                   key: POSTGRESQL_USER
-            - name: DB_PASS
+            - name: POSTGRESQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
                   key: POSTGRESQL_PASSWORD
-            - name: DB_PORT
+            - name: POSTGRES_PORT
               value: "5432"
