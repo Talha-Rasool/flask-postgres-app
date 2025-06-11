@@ -16,7 +16,7 @@ spec:
       containers:
         - name: flask
           image: rasooltalha/flask-postgres:dev
-          command: ["sleep", "3600"]
+
           ports:
             - containerPort: 5000
           env:
