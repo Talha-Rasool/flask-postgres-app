@@ -8,9 +8,7 @@ class Config:
     DB_PORT = os.getenv("POSTGRES_PORT", "5432")
     DB_NAME = os.getenv("POSTGRESQL_DATABASE")
 
-    print("POSTGRESQL_USER =", os.getenv("POSTGRESQL_USER"))
-    print("POSTGRESQL_PASSWORD =", os.getenv("POSTGRESQL_PASSWORD"))
-    print("POSTGRESQL_DATABASE =", os.getenv("POSTGRESQL_DATABASE"))
+    
 
 
     if not all([DB_USER, DB_PASS, DB_NAME]):

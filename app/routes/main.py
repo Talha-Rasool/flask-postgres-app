@@ -7,3 +7,6 @@ main = Blueprint('main', __name__)
 def version():
     version = get_postgres_version()
     return jsonify({"postgres_version": version})
+
+
+

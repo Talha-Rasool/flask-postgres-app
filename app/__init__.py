@@ -14,5 +14,9 @@ def create_app():
     from .routes.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    from .health.check import health as health_blueprint
+    app.register_blueprint(health_blueprint)
+
     return app
+
 

@@ -16,6 +16,7 @@ spec:
       containers:
         - name: flask
           image: rasooltalha/flask-postgres:dev
+          imagepullPolicy: Always
 
           ports:
             - containerPort: 5000
