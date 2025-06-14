@@ -8,6 +8,6 @@ spec:
     kind: Service
     name: flask-service
   port:
-    targetPort: 80
+    targetPort: 5000
   tls:
     termination: edge
