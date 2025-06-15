@@ -6,7 +6,7 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def version():
     version = get_postgres_version()
-    return jsonify({"postgres_version by Talha R": version})
+    return jsonify({"postgres_version by Talha-R": version})
 
 
 
