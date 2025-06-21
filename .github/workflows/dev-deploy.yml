@@ -45,7 +45,6 @@ jobs:
           kubectl config set-context --current --namespace=honey-singh-dev
           for file in k8s/*.yaml; do
             echo "Applying $file"
-            cat $file
             kubectl apply -f "$file"
           done
         env:
